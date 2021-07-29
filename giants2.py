@@ -20,7 +20,7 @@ class Giants2Spider(scrapy.Spider):
             yield scrapy.Request(next_page, callback=self.parse_category)
 
     def parse_item(self, response):
-        """Return an item dictionary"""
+        """Return a product dictionary"""
         yield {
             "category": response.css(".product_meta a[rel='tag']::text").get(),
             "name": response.css('h1.product_title.entry-title::text').get(),
