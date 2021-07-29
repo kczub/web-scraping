@@ -1,3 +1,2 @@
 ### Repository for various web scraping projects 
-Python
-Scrapy
+Python, Scrapy
