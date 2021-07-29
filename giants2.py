@@ -6,10 +6,12 @@ class Giants2Spider(scrapy.Spider):
     start_urls = ['https://wearelittlegiants.com/home/shop/']
 
     def parse(self, response):
+        """Return links to all categories"""
         for url in response.css('div.category_grid_box a::attr(href)').getall():
             yield scrapy.Request(url, callback=self.parse_category)
 
     def parse_category(self, response):
+        """Return links to all products in category"""
         for url in response.css('h2.woocommerce-loop-product__title > a::attr(href)').getall():
             yield scrapy.Request(url, callback=self.parse_item)
 
@@ -18,6 +20,7 @@ class Giants2Spider(scrapy.Spider):
             yield scrapy.Request(next_page, callback=self.parse_category)
 
     def parse_item(self, response):
+        """Return an item dictionary"""
         yield {
             "category": response.css(".product_meta a[rel='tag']::text").get(),
             "name": response.css('h1.product_title.entry-title::text').get(),
