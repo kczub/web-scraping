@@ -1,0 +1,3 @@
+"""
+nowy plik do usunięcia
+"""
