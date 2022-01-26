@@ -9,6 +9,12 @@ def proba(response):
     if response == None:
         return "Nie dotyczy"
     return response.split('\n')[2].strip()
+
+# Try
+# def proba(response):
+#    if response:
+#        return response.split('\n')[2].strip()
+#    return "Nie dotyczy"
         
 
 
